@@ -22,7 +22,5 @@ For server to server comunications, the approach proposed by the report is to si
 
 Then, the receiving serve can check message integrity with fetching the actor public key indicated in `keyId` and checking the message body (digest) against the public key provided in the actor description.
 
-## Note 1 <div id="note1" />
+## <span id="note1">Note 1</span>
 This part of ActivityPub is quite controversial as in ActivityPub every `Activity` is an `Object`, so that one cannot deduce that an `Object` is not an `Activity` if not explicitly stated.     
-
-Then, the 
