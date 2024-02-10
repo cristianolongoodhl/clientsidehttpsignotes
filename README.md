@@ -16,11 +16,19 @@ Notice that security mechanisms both for client-to-server and server-to-server c
 For client to server comunications, the report suggests [OAuth 2](https://oauth.net/2/), which is a well-established authentication and authorization protocolo wich, in addition, provides confidentiality features.
 
 For server to server comunications, the approach proposed by the report is to sign messages with [HTTP Signatures](https://tools.ietf.org/html/draft-cavage-http-signatures-08) as follows:
-- of course, the headers taken into consideration by the signature must contains at minimun the message content _digest_;
+- of course, the headers taken into consideration by the signature must contains at minimun the message content _digest_, see also [Note 2](#note2);
 - the message must be signed with a key associated to the sender actor;
 - the `keyId` field of the `Signature` header should link to the `Actor` description which. in turn, must provide the public part of the actor key via a `publicKey`.
 
 Then, the receiving serve can check message integrity with fetching the actor public key indicated in `keyId` and checking the message body (digest) against the public key provided in the actor description.
 
-## <span id="note1">Note 1</span>
+### <span id="note1">Note 1</span>
 This part of ActivityPub is quite controversial as in ActivityPub every `Activity` is an `Object`, so that one cannot deduce that an `Object` is not an `Activity` if not explicitly stated.     
+
+### <span id="note2">Note 2</span>
+Some implementations such as, for example, [Mastodon](https://joinmastodon.org/) require to take into consideration also the `date` header in the signature, in order to handle and eventually discard old messages which may be sent by malitious servers.  
+
+## HTTP Signature in Mastodon
+
+As reported in [How to implement a basic ActivityPub server](https://blog.joinmastodon.org/2018/06/how-to-implement-a-basic-activitypub-server/#http-signatures) (see also [Note 2](#note2)) Mastodon servers defines a 30 seconds validity interval for messages. I.e., mastodon servers will discard messages recevived 30 seconds later the date reported in the `date` header. 
+
