@@ -30,5 +30,14 @@ Some implementations such as, for example, [Mastodon](https://joinmastodon.org/)
 
 ## HTTP Signature in Mastodon
 
-As reported in [How to implement a basic ActivityPub server](https://blog.joinmastodon.org/2018/06/how-to-implement-a-basic-activitypub-server/#http-signatures) (see also [Note 2](#note2)) Mastodon servers defines a 30 seconds validity interval for messages. I.e., mastodon servers will discard messages recevived 30 seconds later the date reported in the `date` header. 
+As reported in [How to implement a basic ActivityPub server](https://blog.joinmastodon.org/2018/06/how-to-implement-a-basic-activitypub-server/#http-signatures) (see also [Note 2](#note2)) Mastodon servers defines a 30 seconds validity interval for messages. I.e., mastodon servers will discard messages recevived 30 seconds later the date reported in the `date` header.
+
+A mastodon servers acts as a _key holder_ for users' key pairs: key pairs of users are generated, stored and guarded by the server, which will use them to generate the signature header when delivering activities.
+
+This approach has some drawbacks:
+
+- <span id="sd1">[SD1]</span> first and more relevant, a malitious server may send spurious messages claiming that they must attributed to some of its users;
+- <span id="sd1">[SD2]</span> in addition, if the server is compromised, all the private keys of its users are at risk and should be invalidated.
+
+
 
