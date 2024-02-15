@@ -36,6 +36,8 @@ As reported in [How to implement a basic ActivityPub server](https://blog.joinma
 
 A mastodon servers acts as a _key holder_ for users' key pairs: key pairs of users are generated, stored and guarded by the server, which will use them to generate the signature header when delivering activities.
 
+![Activity delivery with server side signature diagram](docs/assets/deliveryss.svg)
+
 This approach has some drawbacks:
 
 - <span id="sd1">[SD1]</span> first and more relevant, a malitious server may send spurious messages claiming that they must attributed to some of its users;
