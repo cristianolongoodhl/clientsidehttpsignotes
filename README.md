@@ -11,7 +11,7 @@ Now let use recall the [Activity](https://www.w3.org/TR/activitystreams-vocabula
 - Server to Server
   * <span id="#cso">[SS]</span> once that the `Activity` has been placed into the sender outbox, the server sends it to the `inbox`es of all the activity target actors. Notice that some of these inboxes may reside outside the sender server. In these cases we talk about a _Server to Server_ communication, which is described in the specification at [7.1 Delivery](https://www.w3.org/TR/activitypub/#delivery).
  
-[Activity delivery diagram](/clientsidehttpsignotes/docs/assets/delivery.svg)
+![Activity delivery diagram](/clientsidehttpsignotes/docs/assets/delivery.svg)
  
 Notice that security mechanisms for both client-to-server and server-to-server communications are not specified in the protocol, as they are left to implementations. The ActivityPub specification refers (in a non-mandatory way) to the [Social Web Community Group Authentication and Authorization best practices report](https://www.w3.org/wiki/SocialCG/ActivityPub/Authentication_Authorization), which effectivelly guided the most part of the ActivityPub implementations currently availabe.
 
