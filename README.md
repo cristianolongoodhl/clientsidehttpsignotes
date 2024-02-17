@@ -1,3 +1,7 @@
+# Comparing server-side and client-side generation of the HTTP signature header in ActivityPub communications
+
+Please contribute at the [github repository cristianolongoodhl/clientsidehttpsignotes](https://github.com/cristianolongoodhl/clientsidehttpsignotes)
+
 ## Activity delivery in ActivityPub
 As reported in the [ActivityPub specification](https://www.w3.org/TR/2018/REC-activitypub-20180123/), an ActivityPub server must provide each [`Actor`](https://www.w3.org/TR/activitypub/#actor-objects) with two ['Collection's](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-collection): [`outbox`](https://www.w3.org/TR/activitypub/#outbox) and [`inbox`](https://www.w3.org/TR/activitypub/#inbox). In addition, the addresses of these collections must be listed in the publicly available `Actor` description. 
 
